@@ -13,9 +13,11 @@ public:
     Postac(std::string imie): m_imie(imie), m_poziom(1), m_hp(100){ // : znaczy lista inicjalizacyjna, "zanim"
     }                                                               // tu jest konstruktor 
 
-    ~Postac(){}                                                     // to jest destruktor
+    virtual ~Postac(){}                                             // to jest destruktor, dodajemy virtual bo przy dziedziczeniu mógłby wystąpić problem z usuwaniem, a tak najpierw sprawdzi destruktor klasy pochodnej potem bazowej i wszytsko bęzie usunięte
 
-    void przedstawSie(){
+    virtual void atakuj() = 0;                                      // to jest metoda wirtualna, czyli musi być zaimplementowana w klasie dziedziczącej, a = 0 oznacza że nie ma implementacji w tej klasie
+
+    void przedstawSie() const{                                      // const bo nie zmieniamy żadnych danych         
         std::cout << "Moje imię to: " << m_imie << std::endl;
         std::cout << "Mój poziom to: " << m_poziom << std::endl;
     }
