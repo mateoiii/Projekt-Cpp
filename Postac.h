@@ -8,6 +8,7 @@ class Postac{
 protected:                                                          // protected bo dostępne dla klas dziedziczących
     std::string m_imie;                                             // std dlatego że w plikach .h nie robimy using namespace std bo przy podłączaniu do inncyh plików mogłoby narobić błędy
     int m_poziom;
+    int m_exp;
     int m_hp;
 public:
     Postac(std::string imie);                                       // tu jest konstruktor 
