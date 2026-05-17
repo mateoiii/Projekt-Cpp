@@ -27,4 +27,7 @@ public:
 
     Postac& operator=(const Postac& innaPostac);                    // to jest instrukcja co ma się stać gdy będziemy chcieć w trakcie gty przyrównać istniejące postacie, operator= pozwala zmienić działanie funkcji =, jest typu postac& dla kaskadowych równości x=y=z która wykonuje się od prawej do lewej i robiąc y=z zwróci odwołanie do samej siebie ay wykonać x=wynik(y=z) 
     
+
+    void podniesPrzedmiot(std::string przedmiot);                   // metoda do podnoszenia przedmiotów, będzie po prostu przekazywać przedmiot do ekwipunku musi tu być bo z poziomu main nie mamy dotsępu do funckji ekwipunku, a z poziomu postaci już tak.
+    void pokazPlecak() const;
 };// po destruktorze konstruktorze i metodach musi być średnik bo to są zapowiedzi tych rzsczy które trzeba będzie zaimplementować w pliku .cpp

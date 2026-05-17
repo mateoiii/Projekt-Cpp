@@ -14,7 +14,7 @@ protected:
 
 public:
     Ekwipunek();                        //konstruktor ekwipunku, jest pusty bo nie mamy żadnych przedmiotów i konstruktor zainicjalizuje poprostu pusty wektor
-                                        // nie potrzeba nam destruktora bo ta klasa korzysta tylko z vektora przyjmującego stringi więc wszystko inteligentnie samo się usunie
+                                        // nie potrzeba nam destruktora bo ta klasa korzysta tylko z wektora przyjmującego stringi więc wszystko inteligentnie samo się usunie
     void pokazZawartosc() const;
     
     void dodajPrzedmiot(std::string przedmiot);

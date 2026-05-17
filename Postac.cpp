@@ -31,3 +31,10 @@ Postac& Postac::operator=(const Postac& innaPostac){
     m_ekwipunek = new Ekwipunek(*(innaPostac.m_ekwipunek));                                                      // tworzymy nowy ekwipunek który jest kopią ekwipunku innej postaci, * przed innaPostac.m_ekwipunek bo chcemy przekazać to co jest pod adresem, wyłuskanie
     return *this;                                                                                                // zwracamy siebie żeby można było robić kaskadowe przypisania
 }
+
+void Postac::podniesPrzedmiot(std::string przedmiot) {
+    m_ekwipunek->dodajPrzedmiot(przedmiot);
+}
+void Postac::pokazPlecak() const{
+    m_ekwipunek->pokazZawartosc();
+}
