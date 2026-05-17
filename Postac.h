@@ -3,7 +3,7 @@
 #pragma once                                                        //zapobiego dołaczaniu tego samego pliku nagłówkowego wielokrotnie
 #include <iostream>
 #include <string>
-#include <Ekwipunek.h>
+#include "Ekwipunek.h"
 
 class Postac{ 
 protected:                                                          // protected bo dostępne dla klas dziedziczących
@@ -22,4 +22,9 @@ public:
 
     void przedstawSie() const;                                      // const bo nie zmieniamy żadnych danych         
 
+
+    Postac(const Postac& innaPostac);                               // to jest konstruktor kopiujący, będzie działał gdy będziemy chcieli skopiować postać i działą on tak że bierze postać& bo potrzebujemy danych z postaci i musimy wkleić je do innaPostac ale robić to z const aby nie zmienić przypadkowo danych postac
+
+    Postac& operator=(const Postac& innaPostac);                    // to jest instrukcja co ma się stać gdy będziemy chcieć w trakcie gty przyrównać istniejące postacie, operator= pozwala zmienić działanie funkcji =, jest typu postac& dla kaskadowych równości x=y=z która wykonuje się od prawej do lewej i robiąc y=z zwróci odwołanie do samej siebie ay wykonać x=wynik(y=z) 
+    
 };// po destruktorze konstruktorze i metodach musi być średnik bo to są zapowiedzi tych rzsczy które trzeba będzie zaimplementować w pliku .cpp
