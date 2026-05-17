@@ -15,7 +15,8 @@ void Postac::przedstawSie() const{                                              
 }
 
 Postac::Postac(const Postac& innaPostac)
-    : m_imie(innaPostac.m_imie), m_poziom(innaPostac.m_poziom), m_exp(innaPostac.m_exp), m_hp(innaPostac.m_hp), m_ekwipunek(new Ekwipunek(*(innaPostac.m_ekwipunek))){  // definicja konstruktora kopiującego, tworzymy nowy ekwipunek który jest kopią ekwipunku innej postaci, * przed innaPostac.m_ekwipunek bo chcemy przekazać to co jest pod adresem a nie sam adres
+    : m_imie(innaPostac.m_imie), m_poziom(innaPostac.m_poziom), m_exp(innaPostac.m_exp), 
+    m_hp(innaPostac.m_hp), m_ekwipunek(new Ekwipunek(*(innaPostac.m_ekwipunek))){                                // definicja konstruktora kopiującego, tworzymy nowy ekwipunek który jest kopią ekwipunku innej postaci, * przed innaPostac.m_ekwipunek bo chcemy przekazać to co jest pod adresem a nie sam adres
 }
 
 Postac& Postac::operator=(const Postac& innaPostac){
