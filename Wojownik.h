@@ -11,6 +11,6 @@ public:
 
     ~Wojownik();                    // destruktor
 
-    void atakuj() override;         // override oznacza, że nadpisujemy metodę wirtualną z klasy bazowej
+    void atakuj(Postac* cel) override;         // override oznacza, że nadpisujemy metodę wirtualną z klasy bazowej
     
 };

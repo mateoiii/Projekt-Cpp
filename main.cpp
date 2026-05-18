@@ -32,6 +32,12 @@ int main() {
     std::cout << "Zly Mag po nadpisaniu go klonem:" << std::endl;
     innyMag.pokazPlecak(); 
 
+    oryginalnyMag.atakuj(&innyMag);
+    oryginalnyMag.atakuj(&innyMag);
+    oryginalnyMag.atakuj(&innyMag);
+    oryginalnyMag.atakuj(&innyMag);
+
+
 
     return 0;
 }

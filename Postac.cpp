@@ -20,7 +20,9 @@ Postac::~Postac(){                                                              
 }
 
 void Postac::otrzymajObrazenia(int otrzymaneObrazenia){
-    m_hp =- otrzymaneObrazenia;
+    int nowe_hp = m_hp - otrzymaneObrazenia;
+    std:: cout << "Zostało mi " << nowe_hp << " punktow zycia." << std::endl;
+    m_hp = nowe_hp;
 }
 
 void Postac::przedstawSie() const{                                                                               // definicja metody przedstawSie, const zostawiamy
