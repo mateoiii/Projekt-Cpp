@@ -83,3 +83,36 @@ void Postac::zapiszBohatera() {
         std::cout << "Stan gry zostal pomyslnie zapisany." << std::endl;
     } else std::cout << "Nie udalo sie otworzyc pliku do zapisu!" << std::endl;
 }
+
+bool Postac::wczytajBohatera() {
+    std::ifstream plik("zapis.txt");
+    
+    if (plik.is_open()) {
+        plik >> m_imie;
+        plik >> m_poziom;
+        plik >> m_hp;
+        plik >> m_exp;
+        
+        plik.close();
+        std::cout << "Stan gry zostal pomyslnie wczytany." << std::endl;
+        return true;
+    } else {
+        std::cout << "Nie udalo sie otworzyc pliku do odczytu!" << std::endl;
+        return false;
+    }
+}
+
+void Postac::zdobadzDoswiadczenie(int ilosc) {
+    m_exp += ilosc;
+    std::cout << "\nZdobyles " << ilosc << " punktow doswiadczenia! (Lacznie: " << m_exp << "/100)" << std::endl;
+
+\    if (m_exp >= 100) {
+        m_poziom++;
+        m_exp -= 100; 
+        m_hp += 30; 
+        
+        std::cout << "*** AWANS! ***" << std::endl;
+        std::cout << m_imie << " osiaga " << m_poziom << " poziom!" << std::endl;
+        std::cout << "Twoje zdrowie rosnie! (Aktualne HP: " << m_hp << ")" << std::endl;
+    }
+}

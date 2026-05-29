@@ -50,4 +50,7 @@ public:
     void uzyjMikstury();
 
     void zapiszBohatera();
+    bool wczytajBohatera();
+
+    void zdobadzDoswiadczenie(int ilosc);
 };// po destruktorze konstruktorze i metodach musi być średnik bo to są zapowiedzi tych rzsczy które trzeba będzie zaimplementować w pliku .cpp
