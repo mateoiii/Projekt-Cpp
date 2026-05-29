@@ -57,3 +57,29 @@ void Postac::podniesPrzedmiot(std::string przedmiot) {
 void Postac::pokazPlecak() const{
     m_ekwipunek->pokazZawartosc();
 }
+
+void Postac::uzyjMikstury() {
+    if (m_iloscMikstur > 0) {
+        int leczenie = losoweObrazenia(20, 40); 
+        m_hp += leczenie;
+        m_iloscMikstur--;
+        
+        std::cout << m_imie << " wypija miksture i odzyskuje " << leczenie << " HP! (Zostalo mikstur: " << m_iloscMikstur << ")" << std::endl;
+        std::cout << "Aktualne HP: " << m_hp << std::endl;
+    } 
+    else std::cout << "Brakuje mikstur!" << std::endl;
+}
+
+void Postac::zapiszBohatera() {
+    std::ofstream plik("zapis.txt");
+    
+    if (plik.is_open()) {
+        plik << m_imie << std::endl;
+        plik << m_poziom << std::endl;
+        plik << m_hp << std::endl;
+        plik << m_exp << std::endl; 
+        
+        plik.close();
+        std::cout << "Stan gry zostal pomyslnie zapisany." << std::endl;
+    } else std::cout << "Nie udalo sie otworzyc pliku do zapisu!" << std::endl;
+}

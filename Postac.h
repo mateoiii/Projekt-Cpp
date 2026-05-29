@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <random>
+#include <fstream>
 #include "Ekwipunek.h"
 
 class Postac{ 
@@ -13,6 +14,7 @@ protected:                                                          // protected
     int m_exp;
     int m_hp;
     Ekwipunek* m_ekwipunek;
+    int m_iloscMikstur = 3;
 
     int losoweObrazenia(int min, int max);
 
@@ -44,4 +46,8 @@ public:
     bool czyZyje() const {
     return m_hp > 0;
     }
+
+    void uzyjMikstury();
+
+    void zapiszBohatera();
 };// po destruktorze konstruktorze i metodach musi być średnik bo to są zapowiedzi tych rzsczy które trzeba będzie zaimplementować w pliku .cpp
