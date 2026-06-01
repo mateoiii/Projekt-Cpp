@@ -15,17 +15,16 @@ bool Postac::czyCiosKrytyczny(int szansaWProcentach){
     else return 0;
 }
 
-Postac::Postac(std::string imie): m_imie(imie), m_poziom(1), m_exp(0), m_hp(100), m_ekwipunek(new Ekwipunek()){  // definicja konstruktora, : znaczy lista inicjalizacyjna "zanim", new to po prostu narzędzie do tworzenia rzeczy na stałe w pamięci i zwracania adresu, tworzymy pusty ekwipunek
+Postac::Postac(std::string imie): m_imie(imie), m_poziom(1), m_exp(0), m_hp(100), m_max_hp(100), m_ekwipunek(new Ekwipunek()){  // definicja konstruktora, : znaczy lista inicjalizacyjna "zanim", new to po prostu narzędzie do tworzenia rzeczy na stałe w pamięci i zwracania adresu, tworzymy pusty ekwipunek
 }
 
 Postac::~Postac(){                                                                                               // definicja destruktora, nie ma virtual bo on nie mówi jaka jest funckja tylko jak sie ma zachować w stosunku do innych klas
     delete m_ekwipunek;                                                                                          // zanim usunie się bohater to usuwamy ekwipunek żeby nie było wycieków pamięci
 }
 
-void Postac::otrzymajObrazenia(int otrzymaneObrazenia){
-    int nowe_hp = m_hp - otrzymaneObrazenia;
-    std:: cout << "Zostało mi " << nowe_hp << " punktow zycia." << std::endl;
-    m_hp = nowe_hp;
+void Postac::otrzymajObrazenia(int otrzymaneObrazenia) {
+    m_hp -= otrzymaneObrazenia;
+    if (m_hp < 0) m_hp = 0;
 }
 
 void Postac::przedstawSie() const{                                                                               // definicja metody przedstawSie, const zostawiamy
@@ -58,14 +57,14 @@ void Postac::pokazPlecak() const{
     m_ekwipunek->pokazZawartosc();
 }
 
-void Postac::uzyjMikstury() {
-    if (m_iloscMikstur > 0) {
+void Postac::uzyjMikstury(){
+    if (m_iloscMikstur > 0){
         int leczenie = losoweObrazenia(20, 40); 
         m_hp += leczenie;
-        m_iloscMikstur--;
+        if (m_hp > m_max_hp) m_hp = m_max_hp;
+        m_iloscMikstur--; 
         
         std::cout << m_imie << " wypija miksture i odzyskuje " << leczenie << " HP! (Zostalo mikstur: " << m_iloscMikstur << ")" << std::endl;
-        std::cout << "Aktualne HP: " << m_hp << std::endl;
     } 
     else std::cout << "Brakuje mikstur!" << std::endl;
 }
@@ -77,6 +76,7 @@ void Postac::zapiszBohatera() {
         plik << m_imie << std::endl;
         plik << m_poziom << std::endl;
         plik << m_hp << std::endl;
+        plik << m_max_hp << std::endl;
         plik << m_exp << std::endl; 
         
         plik.close();
@@ -91,6 +91,7 @@ bool Postac::wczytajBohatera() {
         plik >> m_imie;
         plik >> m_poziom;
         plik >> m_hp;
+        plik >> m_max_hp;
         plik >> m_exp;
         
         plik.close();
@@ -108,11 +109,12 @@ void Postac::zdobadzDoswiadczenie(int ilosc) {
     if (m_exp >= 100) {
         m_poziom++;
         m_exp -= 100; 
-        m_hp += 30; 
+        m_max_hp += 30;
+        m_hp = m_max_hp; 
         
-        std::cout << "*** AWANS! ***" << std::endl;
+        std::cout << "Osiągasz awans" << std::endl;
         std::cout << m_imie << " osiaga " << m_poziom << " poziom!" << std::endl;
-        std::cout << "Twoje zdrowie rosnie! (Aktualne HP: " << m_hp << ")" << std::endl;
+        std::cout << "Twoje maksymalne HP rosnie do: " << m_max_hp << std::endl;    
     }
 }
 

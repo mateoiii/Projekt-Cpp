@@ -13,7 +13,8 @@ std::string Przeciwnik::wylosujImie(){
 
 
 Przeciwnik::Przeciwnik(): Postac(wylosujImie()){
-    m_hp = losoweObrazenia(30,50);
+    m_max_hp = losoweObrazenia(30,70); 
+    m_hp = m_max_hp;
 }
 
 Przeciwnik::~Przeciwnik(){

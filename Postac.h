@@ -14,6 +14,7 @@ protected:                                                          // protected
     int m_poziom;
     int m_exp;
     int m_hp;
+    int m_max_hp;
     Ekwipunek* m_ekwipunek;
     int m_iloscMikstur = 3;
 
@@ -54,6 +55,10 @@ public:
     bool wczytajBohatera();
 
     void zdobadzDoswiadczenie(int ilosc);
+
+    std::string pobierzImie() const { return m_imie; }
+    int pobierzHP() const { return m_hp; }
+    int pobierzMaxHP() const { return m_max_hp; }
 
     friend std::ostream& operator<<(std::ostream& os, const Postac& p); // Deklaracja przyjaciela i przeciążenie operatora strumienia
 };// po destruktorze konstruktorze i metodach musi być średnik bo to są zapowiedzi tych rzsczy które trzeba będzie zaimplementować w pliku .cpp
