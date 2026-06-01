@@ -24,7 +24,7 @@ protected:                                                          // protected
     
 
 public:
-    Postac(std::string imie);                                       // tu jest konstruktor 
+    explicit Postac(std::string imie);                                       // tu jest konstruktor 
                                                                     
     virtual ~Postac();                                              // to jest destruktor, dodajemy virtual (bo moża będzie ją potem zastąpić) bo przy dziedziczeniu mógłby wystąpić problem z usuwaniem, a tak najpierw sprawdzi destruktor klasy pochodnej potem bazowej i wszytsko bęzie usunięte
 

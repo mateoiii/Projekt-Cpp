@@ -12,8 +12,9 @@ void Ekwipunek::pokazZawartosc() const{
     }
     
     std::cout << "W plecaku: ";
-    for(std::string p : m_przedmioty){
-        std::cout << p << ", ";
+
+    for(const std::string& p : m_przedmioty){                           //pętla zakresowa, & żeby nie robić kopii stringa tylko odwoływać się do tego co jest w wektorze, const bo nie zmieniamy tego co jest w wektorze
+    std::cout << p << ", ";
     }
     std::cout << std::endl;
 }

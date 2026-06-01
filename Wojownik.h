@@ -7,7 +7,7 @@ class Wojownik:public Postac{
 private:
     int m_sila;                                 // dodatkowy atrybut dla Wojownika
 public:
-    Wojownik(std::string imie);                 // konstruktor
+    explicit Wojownik(std::string imie);                 // konstruktor
 
     ~Wojownik();                                // destruktor
 

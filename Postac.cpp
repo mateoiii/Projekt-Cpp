@@ -105,7 +105,7 @@ void Postac::zdobadzDoswiadczenie(int ilosc) {
     m_exp += ilosc;
     std::cout << "\nZdobyles " << ilosc << " punktow doswiadczenia! (Lacznie: " << m_exp << "/100)" << std::endl;
 
-\    if (m_exp >= 100) {
+    if (m_exp >= 100) {
         m_poziom++;
         m_exp -= 100; 
         m_hp += 30; 
