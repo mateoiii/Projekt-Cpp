@@ -5,18 +5,36 @@
 #include "Wojownik.h"
 #include "Przeciwnik.h" 
 
+template <typename T>
+void wypiszNaglowek(T tekst) {
+    std::cout << "\n======================================" << std::endl;
+    std::cout << "   " << tekst << std::endl;
+    std::cout << "======================================\n" << std::endl;
+}
+
+
+
+
 int main() {
     Postac* gracz = new Wojownik("Geralt");
 
-    std::cout << "------ MENU GLOWNE ------" << std::endl;
+    wypiszNaglowek("MENU GLOWNE GRY RPG");
+    wypiszNaglowek("WALKA TRWA");
     std::cout << "Czy chcesz wczytac poprzedni zapis gry? (1-Tak, 2-Nie): ";
     char wyborOdczytu = '0';
     std::cin >> wyborOdczytu;
 
     if (wyborOdczytu == '1') {
-        if (gracz->wczytajBohatera()) gracz->przedstawSie();
-        
-    } 
+        try {
+            if (gracz->wczytajBohatera()) {
+                std::cout << *gracz << std::endl;
+            }
+        } 
+        catch (const std::runtime_error& b) {
+            std::cout << "BLAD: " << b.what() << std::endl;
+            std::cout << "Rozpoczynamy z domyslnymi statystykami!" << std::endl;
+        }
+    }
     else {
         std::cout << "Zaczynamy nowa gre jako Geralt!" << std::endl;
     }
@@ -65,7 +83,6 @@ int main() {
         std::uniform_int_distribution<> expDrop(30, 60);
         gracz->zdobadzDoswiadczenie(expDrop(gen));
 
-        // 2. Generujemy losowy lup (Drop System)
         std::vector<std::string> tablicaLupow = {"Zelazny Miecz", "Skorzany Pancerz", "Zloty Pierscien", "Tajemniczy Zwoj", "Stary But"};
         std::uniform_int_distribution<> rzutOPrzedmiot(0, tablicaLupow.size() - 1);
         

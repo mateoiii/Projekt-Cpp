@@ -97,8 +97,7 @@ bool Postac::wczytajBohatera() {
         std::cout << "Stan gry zostal pomyslnie wczytany." << std::endl;
         return true;
     } else {
-        std::cout << "Nie udalo sie otworzyc pliku do odczytu!" << std::endl;
-        return false;
+        throw std::runtime_error("Plik z zapisem nie istnieje na dysku!");
     }
 }
 
@@ -115,4 +114,9 @@ void Postac::zdobadzDoswiadczenie(int ilosc) {
         std::cout << m_imie << " osiaga " << m_poziom << " poziom!" << std::endl;
         std::cout << "Twoje zdrowie rosnie! (Aktualne HP: " << m_hp << ")" << std::endl;
     }
+}
+
+std::ostream& operator<<(std::ostream& os, const Postac& p) {
+    os << "[" << p.m_imie << " | Lvl: " << p.m_poziom << " | HP: " << p.m_hp << "]";
+    return os; // zwracamy strumień
 }

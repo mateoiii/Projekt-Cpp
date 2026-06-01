@@ -21,3 +21,13 @@ void Ekwipunek::pokazZawartosc() const{
 void Ekwipunek::dodajPrzedmiot(std::string przedmiot){
     m_przedmioty.push_back(przedmiot);
 }
+
+void Ekwipunek::posortujPlecak() {
+    if (m_przedmioty.empty()) {
+        std::cout << "Plecak jest pusty, nie ma co sortowac." << std::endl;
+        return;
+    }
+    // Używamy algorytmu sort oraz iteratorów begin() i end()
+    std::sort(m_przedmioty.begin(), m_przedmioty.end());
+    std::cout << "Przedmioty w plecaku zostaly posortowane alfabetycznie!" << std::endl;
+}

@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 
 class Ekwipunek{
@@ -19,4 +20,6 @@ public:
     void pokazZawartosc() const;
     
     void dodajPrzedmiot(std::string przedmiot);
+
+    void posortujPlecak();
 };
