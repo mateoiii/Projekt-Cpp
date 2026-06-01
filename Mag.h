@@ -7,7 +7,7 @@ class Mag:public Postac{                            // Mag dziedziczy po Postac,
 private:
     int m_mana;                                     // dodatkowy atrybut dla Maga
 public:
-    explicit Mag(std::string imie);                          // konstruktor
+    explicit Mag(std::string imie);                 // konstruktor
 
     ~Mag();                                         // destruktor
 

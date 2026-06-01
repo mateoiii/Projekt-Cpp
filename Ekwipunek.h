@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <fstream>
 #include <algorithm>
 
 
@@ -22,4 +23,7 @@ public:
     void dodajPrzedmiot(std::string przedmiot);
 
     void posortujPlecak();
+
+    void zapisz(std::ofstream& plik) const;
+    void wczytaj(std::ifstream& plik);
 };

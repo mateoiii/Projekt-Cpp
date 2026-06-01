@@ -79,10 +79,11 @@ void Postac::zapiszBohatera() {
         plik << m_hp << std::endl;
         plik << m_max_hp << std::endl;
         plik << m_exp << std::endl; 
+        m_ekwipunek->zapisz(plik);
         
         plik.close();
         std::cout << "Stan gry zostal pomyslnie zapisany." << std::endl;
-    } else std::cout << "Nie udalo sie otworzyc pliku do zapisu!" << std::endl;
+    } else std::cout << "Nie udalo sie otworzyc pliku." << std::endl;
 }
 
 bool Postac::wczytajBohatera() {
@@ -94,12 +95,13 @@ bool Postac::wczytajBohatera() {
         plik >> m_hp;
         plik >> m_max_hp;
         plik >> m_exp;
-        
+        m_ekwipunek->wczytaj(plik);
+
         plik.close();
         std::cout << "Stan gry zostal pomyslnie wczytany." << std::endl;
         return true;
     } else {
-        throw std::runtime_error("Plik z zapisem nie istnieje na dysku!");
+        throw std::runtime_error("Plik z zapisem nie istnieje.");
     }
 }
 
